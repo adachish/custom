@@ -1,10 +1,11 @@
-include_recipe 'deploy'
-
 node[:deploy].each do |application, deploy|
 
-  opsworks_deploy do
-    deploy_data deploy
-    app application
-    only_if { File.exists?(deploy[:current_path]) }
+  deploy deploy[:deploy_to] do
+    user deploy[:user]
+    action "rollback"
+
+    only_if do
+      File.exists?(deploy[:current_path])
+    end
   end
 end
