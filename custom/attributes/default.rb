@@ -1,3 +1,3 @@
-default['deploy']['hoge']['user']="ec2-user" 
+default['deploy']['hoge']['user']="root" 
 default['deploy']['hoge']['group']='ec2-user' 
 
